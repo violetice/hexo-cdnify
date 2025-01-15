@@ -17,6 +17,7 @@ Default support:
     <link rel="stylesheet" href="____">
     <script src="____"></script>
     <source src="____"></source>
+    <div style="background: url('____')"></div>
 ```
 
 ## install
@@ -29,15 +30,12 @@ Default support:
 cdn:
   enable: true
   base: //cdn.com
-  tail: v=2019042200000
+  tail: v=20250116
   tags:
     'img[data-orign]':  data-orign
     'img[src]':
       attribute: src
-      callback: > 
-        function(imgSrc) {
-          return imgSrc + '?&v='+ Date.now()
-        }
+      callback: function(imgSrc) { return `${imgSrc}?v=${Date.now()}` }
   excludeTags:
     - 'link'
     - 'script'
@@ -66,8 +64,5 @@ Can custome JS function to handle the cdn url.
 ```yaml
 'img[src]':
       attribute: src
-      callback: > 
-        function(imgSrc) {
-          return imgSrc + '?&v='+ Date.now()
-        }
+      callback: function(imgSrc) { return `${imgSrc}?v=${Date.now()}` }
 ```
